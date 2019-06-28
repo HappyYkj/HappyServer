@@ -1,0 +1,9 @@
+[submodule "third_part/spdlog"]
+	path = third_part/spdlog
+	url = https://github.com/happiykj/spdlog.git
+[submodule "third_part/lua"]
+	path = third_part/lua
+	url = https://github.com/happiykj/lua.git
+[submodule "third_part/sol2"]
+	path = third_part/sol2
+	url = https://github.com/happiykj/sol2.git
