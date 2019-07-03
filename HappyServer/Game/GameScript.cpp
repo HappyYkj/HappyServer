@@ -334,13 +334,16 @@ bool CGameScript::Run()
 {
     // º”‘ÿø‚
     lua.open_libraries(
-        sol::lib::base,
-        sol::lib::package,
-        sol::lib::string,
-        sol::lib::table,
-        sol::lib::math,
-        sol::lib::os,
-        sol::lib::io
+        sol::lib::base,         // print, assert, and other base functions
+        sol::lib::package,      // require and other package functions
+        sol::lib::coroutine,    // coroutine functions and utilities
+        sol::lib::string,       // string library
+        sol::lib::os,           // functionality from the OS
+        sol::lib::math,         // all things math
+        sol::lib::table,        // the table manipulator and observer functions
+        sol::lib::debug,        // the debug library
+        sol::lib::bit32,        // the bit library: different based on which you're using
+        sol::lib::io            // input/output library
     );
 
     // …Ë÷√¬∑æ∂

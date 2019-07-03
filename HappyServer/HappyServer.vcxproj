@@ -89,7 +89,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>Util\;Game\;Manager\;..\third_part\lua\lua\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Util\;Game\;Manager\;..\third_part\lua\lua\;..\third_part\hiredis\;..\third_part\libevent\include\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <PrecompiledHeaderFile />
@@ -107,7 +107,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>Util\;Game\;Manager\;..\third_part\lua\lua\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Util\;Game\;Manager\;..\third_part\lua\lua\;..\third_part\hiredis\;..\third_part\libevent\include\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <PrecompiledHeaderFile />
@@ -127,7 +127,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>Util\;Game\;Manager\;..\third_part\lua\lua\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Util\;Game\;Manager\;..\third_part\lua\lua\;..\third_part\hiredis\;..\third_part\libevent\include\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <PrecompiledHeaderFile />
@@ -149,7 +149,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>Util\;Game\;Manager\;..\third_part\lua\lua\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Util\;Game\;Manager\;..\third_part\lua\lua\;..\third_part\hiredis\;..\third_part\libevent\include\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <PrecompiledHeaderFile />

@@ -1,5 +1,6 @@
 #ifndef _GAME_SCRIPT_H
 #define _GAME_SCRIPT_H
+#include "Singleton.h"
 
 extern "C" {
 #include "lua.h"
@@ -21,7 +22,6 @@ extern "C" {
 #endif /* LUA_ERRGCMM define */
 
 #include <sol/sol.hpp>
-#include "Singleton.h"
 
 class CGameScript
 {

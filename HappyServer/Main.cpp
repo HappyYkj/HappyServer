@@ -2,8 +2,21 @@
 #include "GameServer.h"
 #include "GameScript.h"
 #pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "hiredis.lib")
+#pragma comment(lib, "libevent.lib")
 #pragma comment(lib, "lua.lib")
-// #pragma comment(lib, "hiredis.lib")
+
+BOOL WINAPI ConsoleHandler(DWORD msgType)
+{
+    if (msgType == CTRL_C_EVENT ||
+        msgType == CTRL_CLOSE_EVENT ||
+        msgType == CTRL_BREAK_EVENT ||
+        msgType == CTRL_LOGOFF_EVENT ||
+        msgType == CTRL_SHUTDOWN_EVENT) {
+        return TRUE;
+    }
+    return FALSE;
+}
 
 // 加载socket动态链接库
 bool LoadWindowsSocketLib()
@@ -36,11 +49,20 @@ void UnLoadWindowsSocketLib()
 
 int main()
 {
+    // 绑定监听
+    if (!SetConsoleCtrlHandler(ConsoleHandler, TRUE)) {
+        return -1;
+    }
+
     // 加载socket动态链接库
-    LoadWindowsSocketLib();
+    if (!LoadWindowsSocketLib()) {
+        return -2;
+    }
 
     // 启动服务
-    GameServer::instance().Start();
+    if (!GameServer::instance().Start()) {
+        return -3;
+    }
 
     // 启动脚本
     GameScript::instance().Run();

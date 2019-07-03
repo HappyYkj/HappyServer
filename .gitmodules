@@ -7,3 +7,6 @@
 [submodule "third_part/sol2"]
 	path = third_part/sol2
 	url = https://github.com/happiykj/sol2.git
+[submodule "third_part/hiredis"]
+	path = third_part/hiredis
+	url = https://github.com/happiykj/hiredis.git
