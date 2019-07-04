@@ -322,6 +322,8 @@ static void doREPL(lua_State *L) {
 ** ===================================================================
 */
 
+#include "RedisManager.h"
+
 CGameScript::CGameScript()
 {
 }
@@ -351,6 +353,8 @@ bool CGameScript::Run()
     path.append("Script/?.lua;").append("Script/?/init.lua;").append(lua["package"]["path"]);
     lua["package"]["path"] = path;
 
+    RedisManager::instance().Start(lua);
+
     // Ö´ÐÐ½Å±¾
     sol::protected_function_result result = lua.script_file("Script/main.lua", sol::script_pass_on_error);
     if (!result.valid()) {
@@ -360,5 +364,7 @@ bool CGameScript::Run()
     }
 
     doREPL(lua.lua_state());
+
+    RedisManager::instance().Stop(lua);
     return true;
 }
