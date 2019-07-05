@@ -2,7 +2,6 @@
 #include "GameServer.h"
 #include "GameScript.h"
 #pragma comment(lib, "ws2_32.lib")
-#pragma comment(lib, "hiredis.lib")
 #pragma comment(lib, "lua.lib")
 
 BOOL WINAPI ConsoleHandler(DWORD msgType)

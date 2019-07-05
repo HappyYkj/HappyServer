@@ -7,11 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "third_part\lua\lua.v
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HappyServer", "HappyServer\HappyServer.vcxproj", "{4A568C4D-9B46-4EA6-82F1-B018A33FFBD6}"
 	ProjectSection(ProjectDependencies) = postProject
-		{13E85053-54B3-487B-8DDB-3430B1C1B3BF} = {13E85053-54B3-487B-8DDB-3430B1C1B3BF}
 		{3029AEE6-5F8B-4CF3-9540-BC0E56E8C7A0} = {3029AEE6-5F8B-4CF3-9540-BC0E56E8C7A0}
 	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hiredis", "third_part\hiredis\hiredis.vcxproj", "{13E85053-54B3-487B-8DDB-3430B1C1B3BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +34,6 @@ Global
 		{4A568C4D-9B46-4EA6-82F1-B018A33FFBD6}.Release|x64.Build.0 = Release|x64
 		{4A568C4D-9B46-4EA6-82F1-B018A33FFBD6}.Release|x86.ActiveCfg = Release|Win32
 		{4A568C4D-9B46-4EA6-82F1-B018A33FFBD6}.Release|x86.Build.0 = Release|Win32
-		{13E85053-54B3-487B-8DDB-3430B1C1B3BF}.Debug|x64.ActiveCfg = Debug|x64
-		{13E85053-54B3-487B-8DDB-3430B1C1B3BF}.Debug|x64.Build.0 = Debug|x64
-		{13E85053-54B3-487B-8DDB-3430B1C1B3BF}.Debug|x86.ActiveCfg = Debug|Win32
-		{13E85053-54B3-487B-8DDB-3430B1C1B3BF}.Debug|x86.Build.0 = Debug|Win32
-		{13E85053-54B3-487B-8DDB-3430B1C1B3BF}.Release|x64.ActiveCfg = Release|x64
-		{13E85053-54B3-487B-8DDB-3430B1C1B3BF}.Release|x64.Build.0 = Release|x64
-		{13E85053-54B3-487B-8DDB-3430B1C1B3BF}.Release|x86.ActiveCfg = Release|Win32
-		{13E85053-54B3-487B-8DDB-3430B1C1B3BF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

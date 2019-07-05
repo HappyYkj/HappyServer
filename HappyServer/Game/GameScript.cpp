@@ -350,10 +350,15 @@ bool CGameScript::Run()
 
     // 设置路径
     std::string path;
-    path.append("Script/?.lua;").append("Script/?/init.lua;").append(lua["package"]["path"]);
+    path.append("Script/?.lua;")
+        .append("Script/?/init.lua;")
+        .append(lua["package"]["path"]);
     lua["package"]["path"] = path;
 
-    RedisManager::instance().Start(lua);
+    std::string cpath;
+    cpath.append("Script/?.dll;")
+        .append(lua["package"]["cpath"]);
+    lua["package"]["cpath"] = cpath;
 
     // 执行脚本
     sol::protected_function_result result = lua.script_file("Script/main.lua", sol::script_pass_on_error);
@@ -364,7 +369,5 @@ bool CGameScript::Run()
     }
 
     doREPL(lua.lua_state());
-
-    RedisManager::instance().Stop(lua);
     return true;
 }
