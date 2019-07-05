@@ -1,3 +1,4 @@
+--[[
 local redis = require 'redis'
 
 local params = {
@@ -25,3 +26,20 @@ local co = coroutine.create(function()
 	end
 end)
 coroutine.resume(co)
+--]]
+sql = mysql.new()
+sql:connect("127.0.0.1", "root", "zICofuzK7DX", "catchfish", 3306)
+
+sql:execute("INSERT INTO `catchfish`.`user_data` (`update_time`, `path`, `name`, `context`) VALUES ('2019-07-05 16:39:06', 'user', '483843', '');")
+sql:execute("SELECT * FROM user_data", function(rows)
+	print(rows, #rows)
+	for index, data in ipairs(rows) do
+		print(index, data, #data)
+		for idx, value in ipairs(data) do
+			print(idx, value)
+		end
+
+		print(">>>>>>>>>>>>>>>>>>>>")
+	end
+end)
+--]]

@@ -3,6 +3,8 @@
 #include "GameScript.h"
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "lua.lib")
+#pragma comment(lib, "libmysql.lib")
+#pragma comment(lib, "mysqlclient.lib")
 
 BOOL WINAPI ConsoleHandler(DWORD msgType)
 {
