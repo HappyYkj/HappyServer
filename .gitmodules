@@ -5,6 +5,11 @@
 [submodule "third_part/sol2"]
 	path = third_part/sol2
 	url = https://github.com/happiykj/sol2.git
+	branch = develop
 [submodule "third_part/luasocket"]
 	path = third_part/luasocket
 	url = https://github.com/happiykj/luasocket.git
+[submodule "third_part/spdlog"]
+	path = third_part/spdlog
+	url = https://github.com/happiykj/spdlog.git
+	branch = v1.x
