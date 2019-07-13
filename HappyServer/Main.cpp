@@ -1,10 +1,7 @@
 #include <Windows.h>
 #include "GameServer.h"
-#include "GameScript.h"
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "lua.lib")
-#pragma comment(lib, "libmysql.lib")
-#pragma comment(lib, "mysqlclient.lib")
 
 BOOL WINAPI ConsoleHandler(DWORD msgType)
 {
@@ -53,27 +50,18 @@ int main()
     if (!SetConsoleCtrlHandler(ConsoleHandler, TRUE)) {
         return -1;
     }
-
+ 
     // 加载socket动态链接库
     if (!LoadWindowsSocketLib()) {
         return -2;
     }
 
-    // 启动服务
-    if (!GameServer::instance().Start()) {
-        return -3;
-    }
-
-    // 启动脚本
-    GameScript::instance().Run();
-
-    // 停止服务
-    GameServer::instance().Stop();
+    // 运行服务
+    GameServer::instance().RunLoop();
 
     // 释放socket动态链接库
     UnLoadWindowsSocketLib();
 
-    system("pause");
     return 0;
 }
 

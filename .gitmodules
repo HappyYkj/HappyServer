@@ -13,3 +13,6 @@
 	path = third_part/spdlog
 	url = https://github.com/happiykj/spdlog.git
 	branch = v1.x
+[submodule "third_part/luasql"]
+	path = third_part/luasql
+	url = https://github.com/happiykj/luasql.git

@@ -322,8 +322,6 @@ static void doREPL(lua_State *L) {
 ** ===================================================================
 */
 
-#include "MysqlManager.h"
-
 CGameScript::CGameScript()
 {
 }
@@ -360,38 +358,8 @@ bool CGameScript::Run()
         .append(lua["package"]["cpath"]);
     lua["package"]["cpath"] = cpath;
 
-    lua.new_usertype<CMysqlManager>("mysql",
-        "connect", &CMysqlManager::connect,
-        "execute", sol::overload(&CMysqlManager::execute,
-            [=](CMysqlManager& mysql, const char* cmd, sol::safe_function func) {
-                mysql.command(cmd, [=](MYSQL_RES* res) {
-                    sol::table tbl = lua.create_table();
-
-                    // 获取结果数量
-                    unsigned int num_fields = mysql_num_fields(res);
-
-                    // 给ROW赋值，判断ROW是否为空，不为空就打印数据。
-                    while (true) {
-                        MYSQL_ROW row = mysql_fetch_row(res);
-                        if (!row) {
-                            break;
-                        }
-
-                        std::vector<std::string> data;
-                        for (unsigned int idx = 0; idx < num_fields; idx++) {
-                            data.emplace_back(row[idx] ? row[idx] : "");
-                        }
-
-                        tbl.add(sol::as_table(data));
-
-                        // tbl.emplace_back(sol::as_table(data));
-
-                        // tbl.emplace_back(data);
-                        // func(data);
-                    }
-                    func(tbl);
-                });
-            }));
+    lua_writestring(LUA_COPYRIGHT, strlen(LUA_COPYRIGHT));
+    lua_writeline();
 
     // 执行脚本
     sol::protected_function_result result = lua.script_file("Script/main.lua", sol::script_pass_on_error);

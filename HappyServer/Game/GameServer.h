@@ -13,8 +13,7 @@ public:
     ~CGameServer();
 
 public:
-    bool Start();
-    void Stop();
+    bool RunLoop();
 };
 
 typedef Container::singleton_default<CGameServer> GameServer;
