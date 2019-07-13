@@ -7,7 +7,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "third_part\lua\lua.v
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HappyServer", "HappyServer\HappyServer.vcxproj", "{4A568C4D-9B46-4EA6-82F1-B018A33FFBD6}"
 	ProjectSection(ProjectDependencies) = postProject
+		{66E3CE14-884D-4AEA-9F20-15A0BEAF8C5A} = {66E3CE14-884D-4AEA-9F20-15A0BEAF8C5A}
 		{B498A64E-A87C-4719-9598-A0717AD1B2FC} = {B498A64E-A87C-4719-9598-A0717AD1B2FC}
+		{128E8BD0-174A-48F0-8771-92B1E8D18713} = {128E8BD0-174A-48F0-8771-92B1E8D18713}
 		{3029AEE6-5F8B-4CF3-9540-BC0E56E8C7A0} = {3029AEE6-5F8B-4CF3-9540-BC0E56E8C7A0}
 	EndProjectSection
 EndProject
@@ -16,9 +18,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket", "third_part\luasocket\socket.vcxproj", "{66E3CE14-884D-4AEA-9F20-15A0BEAF8C5A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luasql", "third_part\luasql\luasql.vcxproj", "{B498A64E-A87C-4719-9598-A0717AD1B2FC}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3029AEE6-5F8B-4CF3-9540-BC0E56E8C7A0} = {3029AEE6-5F8B-4CF3-9540-BC0E56E8C7A0}
-	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lanes", "third_part\lanes\lanes.vcxproj", "{AECE4E8E-F33E-4363-BC56-791C75743015}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +69,14 @@ Global
 		{B498A64E-A87C-4719-9598-A0717AD1B2FC}.Release|x64.Build.0 = Release|x64
 		{B498A64E-A87C-4719-9598-A0717AD1B2FC}.Release|x86.ActiveCfg = Release|Win32
 		{B498A64E-A87C-4719-9598-A0717AD1B2FC}.Release|x86.Build.0 = Release|Win32
+		{AECE4E8E-F33E-4363-BC56-791C75743015}.Debug|x64.ActiveCfg = Debug|x64
+		{AECE4E8E-F33E-4363-BC56-791C75743015}.Debug|x64.Build.0 = Debug|x64
+		{AECE4E8E-F33E-4363-BC56-791C75743015}.Debug|x86.ActiveCfg = Debug|Win32
+		{AECE4E8E-F33E-4363-BC56-791C75743015}.Debug|x86.Build.0 = Debug|Win32
+		{AECE4E8E-F33E-4363-BC56-791C75743015}.Release|x64.ActiveCfg = Release|x64
+		{AECE4E8E-F33E-4363-BC56-791C75743015}.Release|x64.Build.0 = Release|x64
+		{AECE4E8E-F33E-4363-BC56-791C75743015}.Release|x86.ActiveCfg = Release|Win32
+		{AECE4E8E-F33E-4363-BC56-791C75743015}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

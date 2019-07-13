@@ -89,7 +89,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>Util\;Game\;..\third_part\lua\lua\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third_part\lua\lua\;..\third_part\sol2\single\;..\third_part\sol2\single\include\;..\third_part\spdlog\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <PrecompiledHeaderFile />
@@ -107,7 +107,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>Util\;Game\;..\third_part\lua\lua\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third_part\lua\lua\;..\third_part\sol2\single\;..\third_part\sol2\single\include\;..\third_part\spdlog\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <PrecompiledHeaderFile />
@@ -127,7 +127,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>Util\;Game\;..\third_part\lua\lua\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third_part\lua\lua\;..\third_part\sol2\single\;..\third_part\sol2\single\include\;..\third_part\spdlog\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <PrecompiledHeaderFile />
@@ -149,7 +149,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>Util\;Game\;..\third_part\lua\lua\;..\third_part\spdlog\include\;..\third_part\sol2\single\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third_part\lua\lua\;..\third_part\sol2\single\;..\third_part\sol2\single\include\;..\third_part\spdlog\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <PrecompiledHeaderFile />
@@ -164,16 +164,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Game\GameLogger.h" />
-    <ClInclude Include="Game\GameServer.h" />
-    <ClInclude Include="Game\GameScript.h" />
-    <ClInclude Include="Util\Singleton.h" />
+    <ClInclude Include="GameServer.h" />
+    <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game\GameLogger.cpp" />
-    <ClCompile Include="Game\GameServer.cpp" />
+    <ClCompile Include="GameServer.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Game\GameScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Script\main.lua" />

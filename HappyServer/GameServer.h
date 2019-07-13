@@ -1,5 +1,7 @@
 #ifndef _GAME_SERVER_H
 #define _GAME_SERVER_H
+#include <lua.hpp>
+#include <sol/sol.hpp>
 #include "Singleton.h"
 
 #define HAPPY_VER_MAJOR 0
@@ -14,6 +16,9 @@ public:
 
 public:
     bool RunLoop();
+
+private:
+    sol::state lua;
 };
 
 typedef Container::singleton_default<CGameServer> GameServer;

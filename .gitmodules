@@ -16,3 +16,6 @@
 [submodule "third_part/luasql"]
 	path = third_part/luasql
 	url = https://github.com/happiykj/luasql.git
+[submodule "third_part/lanes"]
+	path = third_part/lanes
+	url = https://github.com/happiykj/lanes.git
