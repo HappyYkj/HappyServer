@@ -164,11 +164,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GameServer.h" />
+    <ClInclude Include="GameScript.h" />
     <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameServer.cpp" />
+    <ClCompile Include="GameScript.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>

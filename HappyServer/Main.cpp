@@ -1,7 +1,10 @@
+#include <mutex>
 #include <Windows.h>
-#include "GameServer.h"
-#pragma comment(lib, "ws2_32.lib")
+#include "GameScript.h"
 #pragma comment(lib, "lua.lib")
+
+std::mutex g_objExitMutex;
+std::condition_variable g_objExitCond;
 
 BOOL WINAPI ConsoleHandler(DWORD msgType)
 {
@@ -10,38 +13,10 @@ BOOL WINAPI ConsoleHandler(DWORD msgType)
         msgType == CTRL_BREAK_EVENT ||
         msgType == CTRL_LOGOFF_EVENT ||
         msgType == CTRL_SHUTDOWN_EVENT) {
+        g_objExitCond.notify_one();
         return TRUE;
     }
     return FALSE;
-}
-
-// 加载socket动态链接库
-bool LoadWindowsSocketLib()
-{
-    // 请求2.2版本的WinSock库
-    WORD wVersionRequested = MAKEWORD(2, 2);
-
-    // 接收Windows Socket的结构信息
-    WSADATA wsaData;
-
-    // 检查套接字库是否申请成功
-    DWORD err = WSAStartup(wVersionRequested, &wsaData);
-    if (0 != err) {
-        return false;
-    }
-
-    // 检查是否申请了所需版本的套接字库
-    if (LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 2) {
-        WSACleanup();
-        return false;
-    }
-    return true;
-}
-
-// 释放socket动态链接库
-void UnLoadWindowsSocketLib()
-{
-    WSACleanup();
 }
 
 int main()
@@ -50,17 +25,14 @@ int main()
     if (!SetConsoleCtrlHandler(ConsoleHandler, TRUE)) {
         return -1;
     }
- 
-    // 加载socket动态链接库
-    if (!LoadWindowsSocketLib()) {
-        return -2;
-    }
 
-    // 运行服务
-    GameServer::instance().RunLoop();
+    GameScript::instance().start();
 
-    // 释放socket动态链接库
-    UnLoadWindowsSocketLib();
+    // 等待事件
+    std::unique_lock<std::mutex> lock(g_objExitMutex);
+    g_objExitCond.wait(lock);
+
+    GameScript::instance().stop();
 
     return 0;
 }

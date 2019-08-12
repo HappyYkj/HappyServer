@@ -19,3 +19,6 @@
 [submodule "third_part/lanes"]
 	path = third_part/lanes
 	url = https://github.com/happiykj/lanes.git
+[submodule "third_part/lfs"]
+	path = third_part/lfs
+	url = https://github.com/happiykj/luafilesystem.git
