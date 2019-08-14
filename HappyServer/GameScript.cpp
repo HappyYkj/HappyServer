@@ -257,6 +257,8 @@ void CGameScript::daemon()
         .append(".\\?\\init.lua;")
         .append(".\\libs\\?.lua;")
         .append(".\\libs\\?\\init.lua;")
+        .append(".\\src\\?.lua;")
+        .append(".\\src\\?\\init.lua;")
         .append(lua["package"]["path"]);
     lua["package"]["path"] = path;
 
