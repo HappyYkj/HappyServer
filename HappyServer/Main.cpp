@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include "GameScript.h"
 #pragma comment(lib, "lua.lib")
+#pragma comment(lib, "lfs.lib")
+#pragma comment(lib, "lanes.lib")
 
 std::mutex g_objExitMutex;
 std::condition_variable g_objExitCond;

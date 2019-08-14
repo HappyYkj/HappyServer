@@ -1,5 +1,10 @@
 #include "GameScript.h"
 
+extern "C" {
+#include "lfs.h"
+#include "lanes.h"
+}
+
 /*
 ** ===================================================================
 ** Game Spd Logger Manager
@@ -250,6 +255,10 @@ void CGameScript::daemon()
         sol::lib::bit32,        // the bit library: different based on which you're using
         sol::lib::io            // input/output library
     );
+
+    // 嵌套第三方库
+    lua.require("lfs", luaopen_lfs);
+    lua.require("lanes.core", luaopen_lanes_core);
 
     // 设置路径
     std::string path;
