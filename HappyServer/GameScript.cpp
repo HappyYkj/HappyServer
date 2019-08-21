@@ -1,10 +1,5 @@
 #include "GameScript.h"
 
-extern "C" {
-#include "lfs.h"
-#include "lanes.h"
-}
-
 /*
 ** ===================================================================
 ** Game Spd Logger Manager
@@ -17,8 +12,9 @@ extern "C" {
 #include "spdlog/sinks/daily_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
-static int luaopen_spdlog(sol::state& lua) {
-    sol::table lua_spdlog = lua.create_named_table("spdlog");
+sol::table luaopen_spdlog_core(sol::this_state state) {
+    sol::state_view lua(state);
+    sol::table lua_spdlog = lua.create_table();
 
     // Log level enum
     lua_spdlog["level"] = lua.create_table_with(
@@ -182,9 +178,7 @@ static int luaopen_spdlog(sol::state& lua) {
         }
         ));
 
-    spdlog::set_default_logger(spdlog::stdout_color_mt("console"));
-    spdlog::set_automatic_registration(true);
-    return 1;
+    return lua_spdlog;
 }
 
 /*
@@ -256,9 +250,8 @@ void CGameScript::daemon()
         sol::lib::io            // input/output library
     );
 
-    // 嵌套第三方库
-    lua.require("lfs", luaopen_lfs);
-    lua.require("lanes.core", luaopen_lanes_core);
+    // 日志库
+    lua.require("spdlog", sol::c_call<decltype(&luaopen_spdlog_core), &luaopen_spdlog_core>);
 
     // 设置路径
     std::string path;
@@ -273,11 +266,15 @@ void CGameScript::daemon()
 
     std::string cpath;
     cpath.append(".\\clibs\\?.dll;")
-        .append(lua["package"]["cpath"]);
+         .append(lua["package"]["cpath"]);
     lua["package"]["cpath"] = cpath;
 
-    // 日志模块
-    luaopen_spdlog(lua);
+    // 初始日志模块
+    spdlog::set_default_logger(spdlog::stdout_color_mt("console"));
+    spdlog::set_automatic_registration(true);
+
+    // 设置结束判断
+    lua["has_been_stop"] = [this]() { return m_event_stop; };
 
     // 执行脚本
     sol::protected_function_result result = lua.script_file("main.lua", sol::script_pass_on_error);
