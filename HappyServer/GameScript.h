@@ -1,9 +1,15 @@
 #ifndef _GAME_SCRIPT_H
 #define _GAME_SCRIPT_H
-#include <thread>
-#include <lua.hpp>
-#include <sol/sol.hpp>
+
+extern "C" {
+#include "lua.h"
+#include "lauxlib.h"
+#include "lualib.h"
+}
+
 #include "Singleton.h"
+#include <sol/sol.hpp>
+#include <thread>
 
 #define HAPPY_VER_MAJOR 0
 #define HAPPY_VER_MINOR 1

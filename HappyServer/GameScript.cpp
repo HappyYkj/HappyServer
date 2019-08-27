@@ -224,6 +224,9 @@ void CGameScript::stop()
     // 通知线程结束
     m_event_stop = true;
 
+    // 标准输入结束
+    printf("exit()");
+
     // 等待线程结束
     if (m_event_thread->joinable()) {
         m_event_thread->join();
