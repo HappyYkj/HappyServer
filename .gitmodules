@@ -25,3 +25,6 @@
 [submodule "third_part/md5"]
 	path = third_part/md5
 	url = https://github.com/happiykj/md5.git
+[submodule "third_part/luaprotobuf"]
+	path = third_part/luaprotobuf
+	url = https://github.com/happiykj/lua-protobuf.git
