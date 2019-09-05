@@ -21,6 +21,8 @@ BOOL WINAPI ConsoleHandler(DWORD msgType)
 
 int main()
 {
+    system("chcp 65001");
+
     // °ó¶¨¼àÌý
     if (!SetConsoleCtrlHandler(ConsoleHandler, TRUE)) {
         return -1;
