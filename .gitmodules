@@ -31,3 +31,6 @@
 [submodule "third_part/luajson"]
 	path = third_part/luajson
 	url = https://github.com/happiykj/lua-cjson.git
+[submodule "third_part/luaevent"]
+	path = third_part/luaevent
+	url = https://github.com/happiykj/luaevent.git
