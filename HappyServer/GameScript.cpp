@@ -197,7 +197,7 @@ CGameScript::~CGameScript()
 {
 }
 
-bool CGameScript::start()
+bool CGameScript::start(std::string& startup_file)
 {
     if (m_event_thread) {
         return true;
@@ -207,7 +207,7 @@ bool CGameScript::start()
     m_event_stop = false;
 
     // 创建事件处理线程
-    m_event_thread = new std::thread(std::bind(&CGameScript::daemon, this));
+    m_event_thread = new std::thread(std::bind(&CGameScript::daemon, this, startup_file));
     if (!m_event_thread) {
         return false;
     }
@@ -237,7 +237,7 @@ void CGameScript::stop()
     m_event_thread = nullptr;
 }
 
-void CGameScript::daemon()
+void CGameScript::daemon(std::string startup_file)
 {
     // 加载库
     lua.open_libraries(
@@ -280,7 +280,7 @@ void CGameScript::daemon()
     lua["has_been_stop"] = [this]() { return m_event_stop; };
 
     // 执行脚本
-    sol::protected_function_result result = lua.script_file("main.lua", sol::script_pass_on_error);
+    sol::protected_function_result result = lua.script_file(startup_file, sol::script_pass_on_error);
     if (!result.valid()) {
         sol::error err = result;
         spdlog::error("\n{}", err.what());

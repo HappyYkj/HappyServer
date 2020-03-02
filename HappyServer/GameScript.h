@@ -22,12 +22,12 @@ public:
     ~CGameScript();
 
 public:
-    bool start();
+    bool start(std::string& startup_file);
     void stop();
 
 private:
     // 事件处理线程
-    void daemon();
+    void daemon(std::string startup_file);
 
 private:
     sol::state lua;

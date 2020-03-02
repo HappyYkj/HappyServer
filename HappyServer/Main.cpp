@@ -1,5 +1,6 @@
 #include <mutex>
 #include <Windows.h>
+#include <filesystem>
 #include "GameScript.h"
 #pragma comment(lib, "lua.lib")
 
@@ -19,16 +20,60 @@ BOOL WINAPI ConsoleHandler(DWORD msgType)
     return FALSE;
 }
 
-int main()
+void usage(void)
+{
+    printf("Usage:\n");
+    printf("        Happy [-f lua-filename]\n");
+    printf("The options are:\n");
+    printf("        -f          run a lua file. will change current working directory to lua file's path.\n");
+    printf("Examples:\n");
+    printf("        Happy -f aoi_example.lua\n");
+}
+
+int main(int argc, char* argv[])
 {
     system("chcp 65001");
+
+    std::string startup_file = "main.lua";   // default startup
+    for (int i = 1; i < argc; ++i)
+    {
+        bool lastarg = i == (argc - 1);
+        std::string_view v{ argv[i] };
+        if ((v == "-h" || v == "--help") && !lastarg)
+        {
+            usage();
+            return 0;
+        }
+        else if ((v == "-f" || v == "--file") && !lastarg)
+        {
+            startup_file = argv[++i];
+            if (std::filesystem::path(startup_file).extension().generic_string() != ".lua")
+            {
+                printf("service file must be a lua script.\n");
+                usage();
+                return 0;
+            }
+
+            if (!std::filesystem::exists(startup_file))
+            {
+                printf("startup file not exits.\n");
+                usage();
+                return 0;
+            }
+        }
+        else
+        {
+            usage();
+            return 0;
+        }
+    }
 
     // 绑定监听
     if (!SetConsoleCtrlHandler(ConsoleHandler, TRUE)) {
         return -1;
     }
 
-    GameScript::instance().start();
+    GameScript::instance().start(startup_file);
 
     // 等待事件
     std::unique_lock<std::mutex> lock(g_objExitMutex);
